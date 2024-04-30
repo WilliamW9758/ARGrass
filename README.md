@@ -4,7 +4,9 @@ Unity, Apple ARKit iOS, XCode
 ## Platform
 iOS 17.4.1
 ## Packages Used
-AR Foundation, Apple ARKit XR Plugin, [RealtimeHand](https://github.com/ogoguel/realtimehand)
+AR Foundation, Apple ARKit XR Plugin
+## Packages Experimented
+[RealtimeHand](https://github.com/ogoguel/realtimehand), OpenCV, Google MediaPipe
 ## Hardware Requirement
 iPhone LiDAR
 ## Description
@@ -24,3 +26,5 @@ Third, I intend to use Unity's built-in collision detection to detect the collis
 
 Finally, I will search for a grass model and place it correctly using surface normals. This may require some GPU optimization if loading many grass object end up being too computationally intensive.
 ## Progress Update
+![ARKit Surface Demo](Demo/LiDAR_Mesh_Demo.gif)
+This GIF demonstrates the surface recognition working on my iPhone. After trying with Vuforia and various other surface recognition packages, I have finally found that ARKit with LiDAR can generate surface meshes. Here, I basically replicated the PolyCam functionality. It was also a struggle to load the Unity project onto the iPhone without a Developer account. However, I figured out the way after a while and it shouldn't be a problem in the future.
