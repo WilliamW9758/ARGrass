@@ -10,7 +10,7 @@ AR Foundation, Apple ARKit XR Plugin
 ## Hardware Requirement
 iPhone LiDAR
 ## Description
-AR Touch Grass is an iOS app that aims to provide an AR experience where the user can use their hand to touch any surface, and grass grows from the surfaces they touch. This project is inspired by various interactive art that allow the user to use their body to interact with a screen or a projection. This app hopes to bring a similar artistic experience to AR, with devices that is accessible to most people. This particular implementation is inspired by various mystical creatures that are said to have plants grow wherever they touch. I think this is an interesting concept with a positive connotation. 
+AR Touch Grass is an iOS app that aims to provide an AR experience where the user can use their hand to touch any surface, and grass grows from the surfaces they touch. This project is inspired by various interactive art that allows the user to use their body to interact with a screen or a projection. This app hopes to bring a similar artistic experience to AR, with devices that is accessible to most people. This particular implementation is inspired by various mystical creatures that are said to have plants grow wherever they touch. I think this is an interesting concept with a positive connotation. 
 ## Technical Challenges
 There are a few steps required to achieve the effect of having something grow out of any surface you touch. 
 1. The surface needs to be identified.
@@ -61,3 +61,11 @@ I realized that the AR Foundation has a built-in image tracker function, which i
 Finally, I used a long rectangular cuboid as a single grass, and created materials for the grass and the auxiliarily models. I wrote some scripts for collision detection and instantiating the grass object at the location of collision. I added some randomness and density checks to make it more organic, and finally, I have a working result.
 
 ![Final Result](Demo/final_result.gif)
+
+## Conclusion
+The ARTouchGrass project successfully demonstrated the feasibility of integrating hand-tracking and surface interaction in an augmented reality environment using iOS devices with LiDAR. By leveraging Unity, ARKit, and various experimental packages, I developed an app that allows users to interact with virtual environments in a uniquely immersive way—by causing grass to grow on surfaces touched by the user's hand.
+
+### Key Takeaways
+- Technological Integration: With hands-on AR development, I realized how many different resources a developer need to leverage in order to create a seemingly simply concept. There are various limitations and advantages to each platform, thus selecting the platform to develop for is also crucial. 
+- Creative Approach to Hand Tracking: Despite challenges with native hand-tracking support in iOS, makeshift methods (e.g., image tracker on the hand) proved somewhat effective. This highlights that there may be multiple ways of achieving similar end results during development. 
+- Enhanced User Engagement: I am glad I didn't go with a ray casting approach. By turning physical gestures into growth mechanisms within the virtual space, I realized that there is a fundamental desire in humans that want physical contact, which is the beauty of XR technology.
