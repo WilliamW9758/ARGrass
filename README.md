@@ -27,4 +27,30 @@ Third, I intend to use Unity's built-in collision detection to detect the collis
 Finally, I will search for a grass model and place it correctly using surface normals. This may require some GPU optimization if loading many grass object end up being too computationally intensive.
 ## Progress Update
 ![ARKit Surface Demo](Demo/LiDAR_Mesh_Demo.gif)
+
 This GIF demonstrates the surface recognition working on my iPhone. After trying with Vuforia and various other surface recognition packages, I have finally found that ARKit with LiDAR can generate surface meshes. Here, I basically replicated the PolyCam functionality. It was also a struggle to load the Unity project onto the iPhone without a Developer account. However, I figured out the way after a while and it shouldn't be a problem in the future.
+
+## Progress Update 2
+Since the last update, I found two more hand-tracking packages: OpenCV and Google Mediapipe. I have experience working with the Python version of OpenCV and Mediapipe before, so I had high hopes for them. While installing these packages, Unity kept crashing, so I took a break and experimented with AR raycasting. 
+
+![ARKit Ray Cast Demo](Demo/raycast_Demo.gif)
+
+This GIF demonstrates ray casting with the AR Foundation package. While the final project does not need ray casting, while I was stuck working on hand recognition, I wanted to experiment with something different to see if there were other options for the project. Also, I switched from using ARKit's Mesh scan to AR Foundation's Plane scan. This is more robust in general as it filters out small meshes and only generates horizontal and vertical planes. 
+
+After a while, I finally got Mediapipe to work.
+
+![MediaPipe Hand Tracking Demo](Demo/mediapipe_Demo.gif)
+
+This GIF demonstrates hand tracking with the Google Mediapipe package. It didn't take long to set up the demo, however, after experimenting with manually extracting the hand structure data, I realized it's not as simple as I thought.
+
+First, Google Mediapipe has a lot of dependencies that require a perfect version match to function (i.e. NumPy, CUDA, Python, Wheel, Tensorflow). Second, having it running on iOS requires first building the framework, loading the framework onto the phone, and referencing the framework in Unity. After spending multiple hours on figuring it out, I finally gave up trying to implement the Google Mediapipe hand tracking.
+
+## Progress Update 3
+I realized the more complete OpenCV implementation in Unity cost almost $100. This deterred me a little so I spent more time researching OpenCV implementation in Unity before making the purchase. It seems that the bounding box and nodes OpenCV generates are all based on the image plane, which is 2D. This is not ideal as I eventually want to track the node's collision with the planes. Thus, I gave up OpenCV.
+
+Turning my attention again to RealtimeHand, I tried running its demo for hours. However, Unity kept crashing as I was trying to load it. This might be caused by it only updated to Unity 2020.3 while I was trying to run it in 2022.3. Its swift version is also outdated. I naively imported the package onto my main project, which for some reason crashed the whole project and corrupted the file, so I had to restart on a new project. Fortunately, most of my progress so far has been experimenting with new packages and not a lot of coding. 
+
+With no hand-tracking packages left to use, I was put into a bad situation. After some research, I found that while there exists a lot of hand tracking solutions on PCs, due to the lack of lidar, detecting the surface would be difficult. However, due to ARKit not natively supporting hand tracking, it is difficult to implement hand tracking on iOS. After some brainstorming, I remembered the image tracker. I decided to tape an image tracker on the back of my hand to track its location. While it doesn't capture the whole hand geometry, the general location of the hand is sufficient for the goal of this project.
+
+![Image Tracker](Demo/image_tracker_Demo.png)
+
